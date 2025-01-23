@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Where Am I?</title>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIUTe4sQAQX7xynLDF3Z1Pxy5LSqt1Vqs"></script>
+    <script type="text/javascript" src="where.js"></script>
+</head>
+<body>
+    <h1>My Locations</h1>
+    <div id="map" style="width: 100%; height: 500px;"></div>
+    <script type="text/javascript">
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 0, lng: 0 },
+                zoom: 2
+            });
+
+            for (var i = 0; i < myData.length; i++) {
+                var data = myData[i];
+                var latlng = new google.maps.LatLng(data.lat, data.lng);
+                var marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    title: data.name
+                });
+            }
+        }
+        initMap();
+    </script>
+</body>
+</html>
